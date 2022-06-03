@@ -8,8 +8,8 @@
 3. We choose the one we need
 4. Getting the recipe
 
-## There is no communication between server and client. To obtain data, the site parser is used!!!
-
 ## Tech stack:
 - Networking: http
 - Localstore: Hive
+
+There is no communication between server and client. The website parser is used to retrieve the data!!!
