@@ -1,0 +1,4 @@
+include: package:lint/analysis_options.yaml
+
+rules:
+  sort_constructors_first: true

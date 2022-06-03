@@ -1,0 +1,10 @@
+{
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": true,
+    "explorer.fileNesting.patterns": {
+        "pubspec.yaml": ".metadata, .packages, pubspec.lock, analysis_options.yaml, cookbook.iml"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
+}
