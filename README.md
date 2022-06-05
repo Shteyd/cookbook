@@ -10,6 +10,6 @@
 
 ## Tech stack:
 - Networking: http
-- Localstore: Hive
+- Localstore: Sembast
 
 There is no communication between server and client. The website parser is used to retrieve the data!!!

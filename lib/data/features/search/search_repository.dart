@@ -6,7 +6,7 @@ import 'package:cookbook/data/api/uri_resolver.dart';
 import 'package:cookbook/data/constants.dart';
 import 'package:cookbook/domain/features/search/search_entities.dart';
 import 'package:cookbook/domain/features/search/search_repository.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class SearchRepositoryImpl implements SearchRepository {
   const SearchRepositoryImpl({
@@ -15,7 +15,7 @@ class SearchRepositoryImpl implements SearchRepository {
   });
 
   final UriResolver uriResolver;
-  final http.Client client;
+  final Client client;
 
   @override
   Future<int> pagesCount(String input) async {

@@ -1,5 +1,5 @@
 name: cookbook
-description: A new Flutter project.
+description: Application for chefs.
 
 publish_to: 'none'
 
@@ -12,9 +12,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  hive: ^2.2.1
   html: ^0.15.0
   http: ^0.13.4
+  sembast: ^3.2.0
 
 dev_dependencies:
   flutter_test:
