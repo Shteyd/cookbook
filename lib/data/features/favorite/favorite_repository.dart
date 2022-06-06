@@ -11,17 +11,17 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
 
   @override
   Future<void> createFavorite(Recipe recipe) async {
-    await store.createFavorite(DbRecipe.fromMap(RecipeMapper.toMap(recipe)));
+    await store.create(DbRecipe.fromMap(RecipeMapper.toMap(recipe)));
   }
 
   @override
   Future<void> deleteFavorite(String url) async {
-    await store.deleteFavorite(url);
+    await store.delete(url);
   }
 
   @override
   Future<List<Recipe>> getAllFavorite() async {
-    final List<DbRecipe> recipes = await store.getAllRecipes();
+    final List<DbRecipe> recipes = await store.readAll();
     final List<Recipe> res = List.generate(
       recipes.length,
       (index) => RecipeMapper.fromMap(recipes[index].toMap()),
@@ -32,7 +32,7 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
 
   @override
   Future<Recipe> getRecipeByUrl(String url) async {
-    final DbRecipe recipe = await store.getRecipe(url);
+    final DbRecipe recipe = await store.read(url);
     final res = RecipeMapper.fromMap(recipe.toMap());
 
     return res;

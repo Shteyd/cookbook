@@ -6,21 +6,21 @@ import 'package:hive/hive.dart';
 abstract class FavoriteStore {
   static const boxId = "favorite";
 
-  Future<void> createFavorite(DbRecipe recipe) async {
+  Future<void> create(DbRecipe recipe) async {
     final box = await Hive.openLazyBox(boxId);
 
     await box.put(recipe.url, jsonDecode(recipe.toJson()));
     await box.close();
   }
 
-  Future<void> deleteFavorite(String url) async {
+  Future<void> delete(String url) async {
     final box = await Hive.openLazyBox(boxId);
 
     await box.delete(url);
     await box.close();
   }
 
-  Future<List<DbRecipe>> getAllRecipes() async {
+  Future<List<DbRecipe>> readAll() async {
     final List<DbRecipe> res = [];
 
     final box = await Hive.openLazyBox(boxId);
@@ -34,7 +34,7 @@ abstract class FavoriteStore {
     return res;
   }
 
-  Future<DbRecipe> getRecipe(String url) async {
+  Future<DbRecipe> read(String url) async {
     final box = await Hive.openLazyBox(boxId);
     final res = await box.get(url);
     await box.close();
