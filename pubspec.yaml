@@ -12,15 +12,16 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+
+  hive: ^2.2.1
+  hive_flutter: ^1.1.0
   html: ^0.15.0
   http: ^0.13.4
-  sembast: ^3.2.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-
-  lint: ^1.8.2
 
 flutter:
   uses-material-design: true

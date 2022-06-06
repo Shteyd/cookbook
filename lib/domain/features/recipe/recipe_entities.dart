@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 class Recipe {
+  final String url;
   final String title;
   final String imgUrl;
   final String time;
@@ -8,6 +11,7 @@ class Recipe {
   final List<RecipeStep> steps;
 
   const Recipe({
+    required this.url,
     required this.title,
     required this.imgUrl,
     required this.time,
