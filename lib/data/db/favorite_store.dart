@@ -9,7 +9,7 @@ class FavoriteStore extends BaseStore<DbRecipe> {
   String get boxId => "favorites";
 
   @override
-  Future<void> create(value) async {
+  Future<void> create(DbRecipe value) async {
     final box = await Hive.openLazyBox(boxId);
 
     await box.put(value.url, jsonDecode(value.toJson()));
