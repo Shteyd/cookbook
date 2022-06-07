@@ -3,5 +3,5 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class ThemeRepository {
   ValueStream<ThemeOption> get theme;
-  void update(ThemeOption option);
+  void setTheme(ThemeOption option);
 }
