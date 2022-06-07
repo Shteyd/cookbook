@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:cookbook/data/db/base_store.dart';
+import 'package:cookbook/data/db/crud_store.dart';
 import 'package:cookbook/data/db/models/recipe.dart';
 import 'package:hive/hive.dart';
 
-class FavoriteStore extends BaseStore<DbRecipe> {
+class FavoriteStore extends CrudStore<DbRecipe> {
   @override
   String get boxId => "favorites";
 

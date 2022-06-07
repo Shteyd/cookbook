@@ -16,6 +16,7 @@ class HtmlElements {
   static const String pagination = "paginator__item false";
   static const String cardPic = "card__picture";
   static const String cardInfo = "card__description";
+  /* --- */
 }
 
 const String userAgent =
