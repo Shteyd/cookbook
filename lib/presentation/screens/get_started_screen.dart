@@ -43,9 +43,9 @@ class GetStartedScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: GestureDetector(
-                    onTap: () => Navigator.of(context).pushNamed(
+                    onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
                       RouteManager.home,
-                      // (_) => false,
+                      (_) => false,
                     ),
                     behavior: HitTestBehavior.opaque,
                     child: Container(

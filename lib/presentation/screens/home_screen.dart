@@ -1,14 +1,17 @@
+import 'package:cookbook/presentation/route/route_manager.dart';
+import 'package:cookbook/presentation/widgets/buttons/bookmark_button.dart';
+import 'package:cookbook/presentation/widgets/custom_text_field.dart';
 import 'package:cookbook/presentation/widgets/indent.dart';
-import 'package:cookbook/presentation/widgets/recipe_tile.dart';
+import 'package:cookbook/presentation/widgets/tiles/vertical_recipe_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends HookWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final searchController = useTextEditingController();
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Indent(
           child: Column(
@@ -17,33 +20,29 @@ class HomeScreen extends StatelessWidget {
               const Text(
                 "Что вы хотите сегодня приготовить?",
                 style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w600,
                   fontSize: 24,
                 ),
               ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: const Color(0xFFF8F8F8),
-                ),
-                child: Row(
-                  children: const [
-                    SizedBox(width: 10),
-                    Icon(
-                      Icons.search_rounded,
-                      size: 25,
-                      color: Color(0xFFAE1027),
+              const SizedBox(height: 25),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(RouteManager.search),
+                      controller: searchController,
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration:
-                            InputDecoration.collapsed(hintText: "Рецепт"),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 5),
+                  BookmarkButton(
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(RouteManager.favorite),
+                  ),
+                ],
               ),
+              const SizedBox(height: 15),
               Row(
                 children: [
                   const Text(
@@ -54,7 +53,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () =>
+                        Navigator.of(context).pushNamed(RouteManager.all),
                     child: Text(
                       "Все",
                       style: TextStyle(
@@ -64,18 +64,19 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 15),
               Expanded(
-                flex: 2,
                 child: ListView.separated(
+                  physics: const ScrollPhysics(parent: BouncingScrollPhysics()),
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) =>
-                      const RecipeTile(),
+                      const VerticalRecipeTile(),
                   separatorBuilder: (BuildContext context, int index) =>
                       const SizedBox(width: 15),
                 ),
               ),
-              const Spacer(),
+              const SizedBox(height: 25),
             ],
           ),
         ),
